@@ -1,0 +1,18 @@
+# Uncomment the next line to define a global platform for your project
+ platform :ios, '10.0'
+
+def commonPods
+  pod 'Alamofire', '~> 4.7'
+  pod 'ReachabilitySwift'
+  pod 'SVProgressHUD'
+  pod 'SDWebImage', '~> 4.4.1'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
+
+end
+target 'TechGropseAssignment' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+ commonPods
+
+end
