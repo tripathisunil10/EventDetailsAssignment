@@ -12,7 +12,21 @@ class EventDetailRouter: EventDetailsRouterProtocol {
     
     static func createEventDetailsViewController() -> EventDetailsViewController {
         
-        return EventDetailsViewController()
+        
+        let eventDetailVC =   AppStoryboard.mainStoryboard .instantiateViewController(withIdentifier: "EventDetailsViewController") as! EventDetailsViewController
+        
+               let presenter   : EventDetailsPresenterProtocols & EventDetailsInteractorPresenterProtocol = EventDetailPresenter()
+               let interactor  : EventDetailsInteractorProtocol = EventDetailsIntractor()
+                 let router      : EventDetailsRouterProtocol = EventDetailRouter()
+                 let tableDelgte  : TableDelegateAndDataSource = EventDetailPresenter()
+                   presenter.eventDetailView = eventDetailVC
+                 presenter.router = router
+                 presenter.interactor = interactor
+                 interactor.presenter = presenter
+                 presenter.tblDelegate = tableDelgte
+                 eventDetailVC.EventDetailPresenter = presenter
+                 return eventDetailVC
+    
     }
     
     func popToRootViewController(nav: UINavigationController?) {

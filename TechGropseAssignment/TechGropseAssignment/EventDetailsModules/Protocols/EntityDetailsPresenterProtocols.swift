@@ -17,7 +17,7 @@ protocol EventDetailsPresenterProtocols: class {
     var tblDelegate:TableDelegateAndDataSource?{set get}
     func createRequestToConnectServerEventDetailsApi(with paramDict:[String:Any])
     
-    //var arrFollowingList:[FollowersList]?{set get}
+    var objEventMaster:EventDetailsMaster?{set get}
 }
 
 protocol EventDetailsPresenterToViewProtocol {
@@ -25,7 +25,7 @@ protocol EventDetailsPresenterToViewProtocol {
 }
 
 protocol EventDetailsViewProtocol: class {
-    func showEventDetailsAPiSuccess()
+    func showEventDetailsAPiSuccess(eventMaster:EventDetailsMaster?)
     func showEventDetailsApiError(error:String)
 }
 
@@ -42,6 +42,6 @@ protocol  EventDetailsRouterProtocol: class {
 }
 
 protocol  EventDetailsInteractorPresenterProtocol: class {
-    func eventDetailAPISuccessResponse()
+    func eventDetailAPISuccessResponse(eventMaster:EventDetailsMaster?)
     func eventDetailAPIFailedResponse(errorMessage:String)
 }
